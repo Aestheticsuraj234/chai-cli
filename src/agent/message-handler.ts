@@ -1,6 +1,6 @@
 import type { SDKMessage } from "@anthropic-ai/claude-agent-sdk";
 import { fmt, truncate } from "../ui/format.js";
-import { startSpinner, stopSpinner } from "../ui/spinner.js";
+import { stopSpinner } from "../ui/spinner.js";
 
 export type MessageHandlerOptions = {
     verbose?: boolean;
@@ -45,7 +45,6 @@ export type MessageHandlerOptions = {
     switch(message.type){
         case "system": {
             if (message.subtype === "init") {
-                startSpinner("Thinking...")
                 console.log(
                   fmt.system(
                     `Session started · model: ${message.model} · id: ${message.session_id.slice(0, 8)}…`

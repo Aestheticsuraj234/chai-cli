@@ -13,6 +13,17 @@ const BASE_OPTIONS = {
     settingSources: ["project"] as Options["settingSources"],
   };
 
+  export function cliModeToPermissionMode(mode: CliMode): PermissionMode {
+    switch (mode) {
+      case "agent":
+        return "acceptEdits";
+      case "ask":
+        return "dontAsk";
+      case "plan":
+        return "plan";
+    }
+  }
+
   export function buildModeOptions(mode: CliMode): Options {
     switch (mode) {
       case "agent":
